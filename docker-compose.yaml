@@ -1,0 +1,39 @@
+version: "2"
+services:
+  django-app:
+    container_name: django
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    image: "django-react-graphql-backend:v1"
+    restart: always
+    command: /gunicorn.sh
+  react-app:
+    build:
+      context: .
+      dockerfile: ./compose/react/Dockerfile
+    image: "django-react-graphql-frontend:v1"
+    container_name: react
+    restart: always
+    ports:
+      - "3000:3000"
+    # volumes:
+    #   - ./frontend:/app
+    entrypoint: ["/bin/sh"]
+    command: >
+      ./entrypoint.sh
+  # mongo:
+  #   container_name: mongo
+  #   image: mongo
+  #   volumes:
+  #     - /data:/data/db
+  #   ports:
+  #     - "27017:27017"
+  nginx:
+    build: ./compose/nginx
+    image: "django-react-graphql-nginx:v1"
+    container_name: nginx
+    depends_on:
+      - django-app
+    ports:
+      - "0.0.0.0:8000:80"
