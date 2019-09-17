@@ -1,0 +1,22 @@
+[
+    {
+        "model": "events.event",
+        "pk": 1,
+        "fields": {
+            "title": "Internship Backend Developer",
+            "description": "Working with Python Django",
+            "price": 2000000,
+            "date": "2019-01-01"
+          }
+    },
+    {
+        "model": "events.event",
+        "pk": 2,
+        "fields": {
+            "title": "Internship Frontend Developer",
+            "description": "Working with ReactJS",
+            "price": 2000000,
+            "date": "2019-01-02"
+          }
+    }
+]

@@ -2,7 +2,7 @@
 line-length = 91
 exclude = '''
   /(
-    | config/settings.py
+    | backend/source/commons/event_helpers.py
   )/
   | config/settings.py
 '''
