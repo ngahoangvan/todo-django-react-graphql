@@ -55,7 +55,10 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = ("graphene_django",)
 
-LOCAL_APPS = ("source.events",)
+LOCAL_APPS = (
+    "source.events",
+    "source.users",
+)
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -143,6 +146,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
+FILE_UPLOAD_PREFIX_FOLDER_USER = 'public/user-avatar'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/

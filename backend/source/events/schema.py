@@ -2,14 +2,16 @@ import graphene
 from graphene import relay, AbstractType, ObjectType
 from graphene_django.types import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
-from source.events.models import Event
+from .models import Event
 from .mutations import CreateEvent, UpdateEvent, DeleteEvent
 from .types import EventType
+from ..users.types import UserType
 
 
 class Query(ObjectType):
     event = graphene.Field(EventType, id=graphene.Int())
     events = graphene.List(EventType)
+    users = graphene.List(UserType)
 
     def resolve_event(self, info, **kwargs):
         id = kwargs.get("id")
