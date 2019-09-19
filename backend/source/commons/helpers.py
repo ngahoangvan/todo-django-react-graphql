@@ -4,9 +4,11 @@ def update_create_instance(instance, args, exception=["id"]):
             setattr(instance, key, value) for key, value in args.items() if key not in exception
         ]
 
-    # caution if you literally cloned this project, then be sure to have
-    # elasticsearch running as every saved instance must go through
-    # elasticsearch according to the way this project is configured.
+    # Cheat for create_update user
+    # 78 is default length of password hash
+    if hasattr(instance, 'password') and len(instance.password) < 78:
+        instance.set_password(instance.password)
+
     instance.save()
 
     return instance

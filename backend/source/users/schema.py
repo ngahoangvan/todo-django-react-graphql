@@ -5,6 +5,7 @@ from graphene_django.types import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 from .models import UserProfile, UserImage
 from .types import UserProfileType, UserType, UserImageType
+from .mutation import CreateUser, UpdateUser
 
 
 class Query(ObjectType):
@@ -41,3 +42,8 @@ class Query(ObjectType):
 
     def resolve_images(self, info, **kwargs):
         return UserImage.objects.all()
+
+
+class Mutation(ObjectType):
+    create_user = CreateUser.Field()
+    update_user = UpdateUser.Field()

@@ -4,7 +4,6 @@ from django.conf import settings
 from imagekit.models import ImageSpecField, ProcessedImageField
 from imagekit.processors import SmartResize
 from ..commons.cache import img_url_cache
-# from ..events.models import Event
 import uuid
 import os
 import sys

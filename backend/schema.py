@@ -13,7 +13,7 @@ class Query(event_schema.Query, user_schema.Query, graphene.ObjectType):
     pass
 
 
-class Mutation(event_schema.Mutation, graphene.ObjectType):
+class Mutation(event_schema.Mutation, user_schema.Mutation, graphene.ObjectType):
     """
     This class will inherit from multiple Queries
     as we begin to add more apps to our project
