@@ -2,6 +2,7 @@ db.sqlite3
 mydatabase
 *__pycache__/
 venv/
+backend/public/
 .vscode
 config/static
 databases

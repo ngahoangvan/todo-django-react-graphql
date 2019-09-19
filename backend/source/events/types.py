@@ -7,3 +7,4 @@ from source.events.models import Event
 class EventType(DjangoObjectType):
     class Meta:
         model = Event
+        # fields = ('user_created',)

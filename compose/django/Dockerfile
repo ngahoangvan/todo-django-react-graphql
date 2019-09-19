@@ -1,5 +1,6 @@
 FROM python:3.6-alpine
 RUN apk add build-base
+RUN apk add --no-cache jpeg-dev zlib-dev
 WORKDIR /app/
 COPY ./backend/requirements.txt .
 RUN python3 -m pip install -r requirements.txt --no-cache-dir

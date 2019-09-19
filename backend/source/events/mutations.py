@@ -1,8 +1,8 @@
 import graphene
-from graphene_django.types import DjangoObjectType, ObjectType
+from graphene_django.types import DjangoObjectType
 from .types import EventType
 from ..events.models import Event
-from ..commons.event_helpers import update_create_instance
+from ..commons.helpers import update_create_instance
 from graphql import GraphQLError
 
 
@@ -44,7 +44,6 @@ class UpdateEvent(graphene.Mutation):
             event_instance = Event.objects.get(pk=id)
             ok = True
             update_create_instance(event_instance, eventInput)
-            event_instance.save()
             return UpdateEvent(ok=ok, event=event_instance)
         except Event.DoesNotExist:
             return GraphQLError("Event with id {} doesn't exist".format(id))
