@@ -1,12 +1,16 @@
+"""
+Define User Models: UserProfile and UserImage
+"""
 from __future__ import absolute_import
+import uuid
+import os
+import sys
 from django.db import models
 from django.conf import settings
 from imagekit.models import ImageSpecField, ProcessedImageField
 from imagekit.processors import SmartResize
 from ..commons.cache import img_url_cache
-import uuid
-import os
-import sys
+
 # Create your models here.
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 

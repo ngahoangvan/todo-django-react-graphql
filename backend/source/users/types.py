@@ -1,8 +1,6 @@
-import graphene
 from graphene_django.types import DjangoObjectType
-from graphene import relay, AbstractType, ObjectType
-from .models import UserProfile, UserImage
 from django.contrib.auth.models import User
+from .models import UserProfile, UserImage
 from ..events.types import EventType
 
 

@@ -3,6 +3,8 @@ from ..users.models import UserProfile
 
 
 class Event(models.Model):
+    """Define Event Model
+    """
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     price = models.FloatField()

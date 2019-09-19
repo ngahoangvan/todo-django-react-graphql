@@ -1,12 +1,13 @@
 import graphene
-from graphene_django.types import DjangoObjectType
+from graphql import GraphQLError
 from .types import EventType
 from ..events.models import Event
 from ..commons.helpers import update_create_instance
-from graphql import GraphQLError
 
 
 class EventInput(graphene.InputObjectType):
+    """Define Event Input Type
+    """
     id = graphene.ID()
     title = graphene.String()
     description = graphene.String()
@@ -15,6 +16,8 @@ class EventInput(graphene.InputObjectType):
 
 
 class CreateEvent(graphene.Mutation):
+    """Graphene Mutation: Create Event
+    """
     class Arguments:
         eventInput = EventInput(required=True)
 
@@ -30,6 +33,8 @@ class CreateEvent(graphene.Mutation):
 
 
 class UpdateEvent(graphene.Mutation):
+    """Graphene Mutation: Update Event
+    """
     class Arguments:
         id = graphene.Int(required=True)
         eventInput = EventInput(required=True)
@@ -50,6 +55,8 @@ class UpdateEvent(graphene.Mutation):
 
 
 class DeleteEvent(graphene.Mutation):
+    """Graphene Mutaion: Delete Event
+    """
     class Arguments:
         id = graphene.Int(required=True)
 
@@ -60,9 +67,10 @@ class DeleteEvent(graphene.Mutation):
     def mutate(root, info, id):
         ok = False
         try:
+            # Get event with pimary_key = id
             event_instance = Event.objects.get(pk=id)
             ok = True
             event_instance.delete()
             return DeleteEvent(ok=ok, message="Delete event {} successfull".format(id))
         except Event.DoesNotExist:
-            return GraphQLError("Event with id {} doesn't exist".format(id))
+            raise GraphQLError("Event with id {} doesn't exist".format(id))

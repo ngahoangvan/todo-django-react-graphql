@@ -1,7 +1,5 @@
 import graphene
-from graphene import relay, AbstractType, ObjectType
-from graphene_django.types import DjangoObjectType
-from graphene_django.filter import DjangoFilterConnectionField
+from graphene import ObjectType
 from .models import Event
 from .mutations import CreateEvent, UpdateEvent, DeleteEvent
 from .types import EventType

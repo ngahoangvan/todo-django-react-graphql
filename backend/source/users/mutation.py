@@ -1,8 +1,5 @@
 import graphene
 from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model
-from django.contrib.auth.password_validation import validate_password
-from graphene_django.types import DjangoObjectType, ObjectType
 from graphql import GraphQLError
 from .models import UserImage, UserProfile
 from .types import UserType, UserProfileType, UserImageType

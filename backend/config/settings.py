@@ -10,10 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 from __future__ import absolute_import, unicode_literals
-
-import environ
 from os.path import abspath, basename, dirname, join
 from sys import path
+import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 # BASE_DIR = dirname(dirname(abspath(__file__)))
@@ -28,7 +27,7 @@ SITE_NAME = basename(DJANGO_ROOT)
 # Add our project to our pythonpath, this way we don't need to type our project
 # name in our dotted import paths:
 path.append(DJANGO_ROOT)
-env = environ.Env()
+ENV = environ.Env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -113,7 +112,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": env.get_value("DBNAME", default="mydatabase"),
+        "NAME": ENV.get_value("DBNAME", default="mydatabase"),
     }
 }
 
