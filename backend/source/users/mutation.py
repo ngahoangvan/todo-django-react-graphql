@@ -41,8 +41,11 @@ class CreateUser(graphene.Mutation):
     @staticmethod
     def mutate(root, info, userInput=None):
         ok = True
+        # check if username, password or email is exist
         if userInput.username and userInput.password and userInput.email:
+            # validate email
             validate_email(userInput.email)
+            # validate password
             validate_password(userInput.password)
             user_instace = update_create_instance(User(), userInput)
             if userInput.profile:
@@ -66,7 +69,9 @@ class UpdateUser(graphene.Mutation):
     def mutate(root, info, id, userInput=None):
         ok = False
         try:
-            if userInput.password is not None and len(userInput.password) >= 78:
+            # check if password exist and cheat for pass django hash password
+            # Django hash password defaut length is 78
+            if userInput.password and len(userInput.password) >= 78:
                 raise GraphQLError("Your password is so long")
             user_instace = User.objects.get(pk=id)
             ok = True
