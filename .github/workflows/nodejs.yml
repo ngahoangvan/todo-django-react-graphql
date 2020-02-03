@@ -18,6 +18,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
+        # go to frontend folder
+        cd frontend
         # install node_module
         npm install
         # run test
