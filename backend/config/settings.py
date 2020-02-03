@@ -58,6 +58,7 @@ THIRD_PARTY_APPS = ("graphene_django",)
 LOCAL_APPS = (
     "source.events",
     "source.users",
+    "source.article",
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -116,25 +117,6 @@ DATABASES = {
         "NAME": env.get_value("DBNAME", default="mydatabase"),
     }
 }
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "djongo",
-#         "ENFORCE_SCHEMA": True,
-#         "NAME": "your-db-name",
-#         "HOST": "host-name or ip address",
-#         "PORT": "port_number",
-#         "USER": "db-username",
-#         "PASSWORD": "password",
-#         "AUTH_SOURCE": "db-name",
-#         "AUTH_MECHANISM": "SCRAM-SHA-1",
-#         "REPLICASET": "replicaset",
-#         "SSL": "ssl",
-#         "SSL_CERTFILE": "ssl_certfile",
-#         "SSL_CA_CERTS": "ssl_ca_certs",
-#         "READ_PREFERENCE": "read_preference"
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
